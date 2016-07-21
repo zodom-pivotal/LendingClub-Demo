@@ -826,7 +826,7 @@ SELECT * FROM ext_completed_loans_d
 UNION ALL
 SELECT * FROM ext_completed_loans_e;
 
-Analyze completed_loans;
+ANALYZE completed_loans;
 
-analyze denied_loans;
+ANALYZE denied_loans;
 
