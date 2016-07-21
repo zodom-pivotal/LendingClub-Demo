@@ -4,9 +4,9 @@ It can also be run on any HAWQ/Greenplum env.
 
 Pre-Reqs:
 
-Download & run lc_demo_ddl_load_data.sql, which pulls data from lendingclub site via external web table, which then loads internal hawq tables for loans completed and loans rejected for last 10 years. Create a lc_demo database then run the file using -d lc_demo. 
+Download & run lc_demo_ddl_load_data.sql, which pulls data from an S3 bucket via external web table, which then loads internal hawq tables for loans completed and loans rejected for last 10 years. Create a lc_demo database then run the file using 'psql -f lc_demo_ddl_load_data.sql -d lc_demo ' . 
   
-Import Zeppelin json, 'LC_Demo.json', then edit Interpreter to connect to lc_demo database. 
+In Zeppelin, import 'LC_Demo.json', then edit PSQL Interpreter to connect to lc_demo database. 
 
 
 Note: original data is from https://www.lendingclub.com/info/download-data.action. 
