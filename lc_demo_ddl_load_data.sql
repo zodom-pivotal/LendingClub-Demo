@@ -782,7 +782,7 @@ CREATE EXTERNAL WEB TABLE ext_denied_loans_c
     employmentLength text,
     policyCode text
 )
-EXECUTE 'wget -qO- https://s3-us-west-2.amazonaws.com/lc-demo-data/RejectStatsC.csv  | tail -n+2 | sed -e ''/^$/d;s/""//g;s/%//g''' ON MASTER
+EXECUTE 'wget -qO- https://s3-us-west-2.amazonaws.com/lc-demo-data/RejectStatsD.csv  | tail -n+2 | sed -e ''/^$/d;s/""//g;s/%//g''' ON MASTER
 FORMAT 'CSV'  (NULL AS '' HEADER);
 
 CREATE EXTERNAL WEB TABLE ext_denied_loans_d
