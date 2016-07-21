@@ -811,6 +811,28 @@ SELECT * FROM ext_denied_loans_c
 UNION ALL
 SELECT * FROM ext_denied_loans_d;
 
+--add partition table for different explains in Zeppelin
+DROP TABLE if exists denied_loans_partbymonth;
+
+CREATE TABLE denied_loans_partbymonth
+(
+    amountRequested float,
+    applicationDate date,
+    loanTitle text,
+    riskScore float,
+    debtToIncomeRatio float,
+    zipCode text,
+    State text,
+    employmentLength text,
+    policyCode text
+)
+DISTRIBUTED RANDOMLY
+PARTITION BY RANGE (applicationDate)
+( START (date '2007-05-01') INCLUSIVE
+   END (date '2016-03-31') EXCLUSIVE
+   EVERY (INTERVAL '1 month') );
+
+INSERT INTO denied_loans_partbymonth SELECT * from denied_loans;
 
 TRUNCATE completed_loans;
 --load em up
@@ -829,4 +851,6 @@ SELECT * FROM ext_completed_loans_e;
 ANALYZE completed_loans;
 
 ANALYZE denied_loans;
+
+ANALYZE denied_loans_partbymonth;
 
